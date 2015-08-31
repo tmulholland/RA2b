@@ -1,7 +1,7 @@
 # RA2b
 my ploting tools/macros for the RA2b analysis
 
-I try to keep all my macros fully compatible with the 
+I try to keep all my macros fully compatible with the  
 most updated version of the TreeMaker as input files.
 
 Usually, I have updated trees on data38 (at Colorado):

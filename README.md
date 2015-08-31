@@ -1,5 +1,8 @@
 # RA2b
-my ploting tools/macros for the RA2b analysis
+
+to checkout:    
+git clone https://github.com/tmulholland/RA2b.git
+
 
 I try to keep all my macros fully compatible with the  
 most updated version of the TreeMaker as input files.

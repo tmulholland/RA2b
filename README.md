@@ -5,7 +5,7 @@ I try to keep all my macros fully compatible with the
 most updated version of the TreeMaker as input files.
 
 Usually, I have updated trees on data38 (at Colorado):
-nfs/data38/cms/mulholland/RA2bTrees/
+/nfs/data38/cms/mulholland/RA2bTrees/
 
 Look for the RunIISpring15.root samples for the new MC 
 e.g. the full Drell-Yan HT binned MC is

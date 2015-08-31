@@ -9,9 +9,21 @@
 
 // kinematic binning: kinBin = 1, 2, 3, 4, 5, or 6, (-1 for baseline)
 
-// sample
+// sample:
+// 0 = sig
+// 1 = dimuon
+// 2 = dielectron
+// 3 = dilepton
 
-TCut getCuts(int nJetBin, int bJetBin, int kinBin, int Zcode){
+TCut getCuts(int nJetBin, int bJetBin, int kinBin, int Zcode) {
+
+  // By default apply mass cut for dilepton.
+  // Only not used when doing Z fits.
+  return getCuts(nJetBin, bJetBin, kinBin, Zcode, true);   
+
+}
+
+TCut getCuts(int nJetBin, int bJetBin, int kinBin, int Zcode, bool massCut) {
 
   // if dilepton selection, we need to use cleaned vars
   if(Zcode == 1 || Zcode == 2 || Zcode == 3) {
@@ -92,16 +104,15 @@ TCut getCuts(int nJetBin, int bJetBin, int kinBin, int Zcode){
     cuts += "DeltaPhi1>0.5&&DeltaPhi2>0.5&&DeltaPhi3>0.3";
     break;
   case 1: // Z->mumu
-    cuts += "(@Muons.size()==2&&@Electrons.size()==0)&&Zp4.M()>=76.188&&Zp4.M()<=106.188";
+    cuts += "(@Muons.size()==2&&@Electrons.size()==0)";
     cuts += "DeltaPhi1clean>0.5&&DeltaPhi2clean>0.5&&DeltaPhi3clean>0.3";
     break;
   case 2: // Z->ee
-    cuts += "(@Muons.size()==0&&@Electrons.size()==2)&&Zp4.M()>=76.188&&Zp4.M()<=106.188";
+    cuts += "(@Muons.size()==0&&@Electrons.size()==2)";
     cuts += "DeltaPhi1clean>0.5&&DeltaPhi2clean>0.5&&DeltaPhi3clean>0.3";
     break;
   case 3: // Z->ll
     cuts += "(@Muons.size()==2&&@Electrons.size()==0)||(@Muons.size()==0&&@Electrons.size()==2)";
-    cuts += "Zp4.M()>=76.188&&Zp4.M()<=106.188";
     cuts += "DeltaPhi1clean>0.5&&DeltaPhi2clean>0.5&&DeltaPhi3clean>0.3";
     break;
   default: // picked unknown sample
@@ -110,5 +121,8 @@ TCut getCuts(int nJetBin, int bJetBin, int kinBin, int Zcode){
     cout << "******Plots will be empty******" << endl;
     break;
   }
+
+  if(massCut && (Zcode == 1 || Zcode == 2 || Zcode == 3) )
+    cuts += "Zp4.M()>=76.188&&Zp4.M()<=106.188";
   return cuts; 
 }

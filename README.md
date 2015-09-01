@@ -1,5 +1,7 @@
 # RA2b
 
+# Tested to work only on ROOT Version 5.34
+
 to checkout:    
 git clone https://github.com/tmulholland/RA2b.git
 

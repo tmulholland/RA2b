@@ -2,12 +2,7 @@
 
 # Tested to work only on ROOT Version 5.34
 
-to checkout:    
-git clone https://github.com/tmulholland/RA2b.git
-
-
-I try to keep all my macros fully compatible with the  
-most updated version of the TreeMaker as input files.
+## SUPERSEDED by z-team-assembly
 
 Usually, I have updated trees on data38 (at Colorado):   
 /nfs/data38/cms/mulholland/RA2bTrees/
